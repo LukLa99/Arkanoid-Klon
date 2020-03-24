@@ -1,0 +1,80 @@
+Brick breaker- Ett datorspel i Java
+
+Vi har bestämt oss för att göra ett datorspel liknande det replika på TV Spelet Breakout som lanserades av Atari 1976. Vi vill skapa ett liknande spel liknande bilden nedan, som är ett av många exempel på arkadspel vi hittade på google (Wallpaper of Arkanoid MX from www.Play.vg #arkanoid #breakout …). Däremot är grafiken inget vi kommer att fokusera på och spelet kommer inte nödvändigtvis se likadant ut, men funktionerna kommer att vara liknande.
+
+Spelet går ut på att man ska studsa en boll mot brickor och om brickorna träffas av bollen försvinner de och bollen studsar tillbaka i den riktning som den har träffat föremålet. Det gäller då för användaren att ta emot bollen på “plattan” och studsa tillbaka bollen till brickorna igen. Om användaren istället missar bollen avslutas spelomgången och spelaren får börja om. 
+
+När spelet startas ska bollen alltså falla ned mot “plattan” på botten av spelplanen. Brickorna är fasta, men plattan plats kan spelaren reglera genom piltangenterna eller genom musen och det gäller för spelaren att placera plattan på ett sätt så att bollen kan studsa mot den och träffa brickorna. Brickorna ger olika poäng och tanken är att poängen är beroende på hur svår brickan är att träffa. Taken är dock inte att poängen har någon vidare betydelse för spelet i sig, utan endast är till för att kunna lagra ett highscore. 
+
+I spelet ska det ska finnas powerups som är ett spelobjekt som spelaren ska kunna fånga. Tanken är att en powerup ska innebära att bollen ej studsar tillbaka vid träff av brickor utan tränger igenom samtliga. Dessutom ska det finnas block som är beständiga och inte går sönder. Vi har även en vision om att olika brickor ska försvinna efter olika antal träffar, vissa brickor kommer alltså försvinna vid en första träff medans det för andra brickor krävs flera träffar. 
+
+
+
+
+
+
+
+
+Ett exempel på ett spel vi skulle vilja efterlikna.
+
+
+
+
+Spelets funktionella krav
+
+
+Spelet ska kunna startas och vara igång till och med att spelaren avslutar spelet.
+
+1
+Spelomgången ska kunna startas om utan att spelet behöver avslutas helt.
+
+2
+Spelet ska implementera flera olika färger.
+
+3
+Spelplattan ska styras genom användningen av WASD / pil-knappar eller mus.
+
+1
+Brickorna ska tåla olika antal träffar innan de försvinner.
+
+2
+Det ska finnas en powerup som spelaren ska kunna fånga.
+
+1
+En powerup innebär att bollen tränger igenom brickor utan att studsa tillbaka. 
+
+1
+Det ska finnas beständiga brickor som aldrig går sönder.
+
+1
+När en bricka har rörts tillräckligt antal gånger av bollen ska den försvinna och spelaren får poäng.
+
+1
+Olika brickor har olika antal poäng.
+
+2
+Olika brickor tål olika antal träffar.
+
+2
+Spelarens highscore ska lagras i en fil.
+
+1
+Spelarens highscore ska vara synligt i spelet. 
+
+2
+Spelaren ska kunna förlora spelet.
+
+1
+Bollen går snabbare när spelet blir svårare.
+
+3
+Det ska finnas olika svårighetsnivåer med olika spelkartor.
+
+3
+Bollen ska kunna studsa uppåt och nedåt.
+
+1
+Spelet ska visa upp spelarens nuvarande poäng.
+
+2
+

@@ -3,20 +3,24 @@ package Variables;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
+import BallVariables.*;
+import BlockVariables.Block;
 
 public class Player {
+	public ArrayList<Ball> balls = new ArrayList<Ball>();
+
 	private boolean left, right;
 	private boolean playing = false;
 	private int vectorX, vectorY;
 	private int x, y;
 	private int LocY;
 	private int LocX;
-
 	private static int b = 300;
 	private static int h = 20;
-
+	RegularBall regball = new RegularBall(LocX, LocX);
 	public Player(int x, int y) {
 		this.vectorX = 1;
 		this.vectorY = 1;
@@ -31,10 +35,9 @@ public class Player {
 
 			MoveXY();
 
-			if (new Rectangle(LocX, LocY, 50, 50).intersects(new Rectangle(x - (b / 2), y - (h / 2), b, h))) {
-				System.out.println("Collision");
+			if (new Rectangle(LocX, LocY, 30, 30).intersects(new Rectangle(x - (b/2), y - (h / 2), b, h))) {
+				System.out.println("PADDLE	");
 				ReverseY();
-				System.out.println("Here");
 				while (new Rectangle(LocX, LocY, 50, 50).intersects(new Rectangle(x - (b / 2), y - (h / 2), b, h))) {
 					System.out.println(vectorY);
 					MoveXY();
@@ -61,11 +64,10 @@ public class Player {
 
 			if (LocY > 1200) {
 				System.out.println("Ending Game");
-
 				return false;
 			}
 
-			if (LocX > 850) {
+			if (LocX > 800) {
 				System.out.println("");
 				ReverseX();
 				while (LocX < 800) {
@@ -73,11 +75,18 @@ public class Player {
 
 				}
 			}
-			if (left) {
-				System.out.println("Left");
-				x -= 30;
-			} else if (right) {
-				x += 30;
+			if (left)  {
+				if (x > 0) {
+					System.out.println("Left");
+					x -= 15;
+				}
+				else {
+					System.out.println("Edge");
+				}
+
+			} else if (right)
+				if (x < 800) {
+				x += 15;
 				System.out.println("Right");
 			}
 
@@ -85,12 +94,16 @@ public class Player {
 		return true;
 	}
 
-	public void DrawOval(Graphics g) {
+	public void drawBall(Graphics g) {
 
-		g.setColor(Color.YELLOW);
-		g.fillOval(LocX, LocY, 20, 20);
+		g.drawOval(LocX, LocY,20,20);
+			
 
-	}
+		}
+		
+		
+
+	
 
 	public void drawPlayer(Graphics g) {
 

@@ -12,9 +12,9 @@ public class Frame extends JFrame {
 
 	public Frame() {
 		super("Arkanoid Clone");
-//		setLayout(new BorderLayout());
-//		menu = new Startmenu();
-//		add(menu,BorderLayout.LINE_END);
+		setLayout(new BorderLayout());
+		menu = new Startmenu();
+		//add(menu,BorderLayout.);
 		game = new Game();
 		add(game);
 		setSize(game.getSize());

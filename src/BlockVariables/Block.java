@@ -38,12 +38,8 @@ public abstract class Block extends Rectangle {
 		Collide = true;
 	}
 
-	public void intersection(){
-		if (new Rectangle(player.getLocX(), player.getLocY(), 50, 50).intersects(new Rectangle(x, y, width, height)))
-			player.ReverseX();
-			
-		}
-	
+
+
 	
 	
 

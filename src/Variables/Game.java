@@ -7,71 +7,81 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import BallVariables.Ball;
 import BlockVariables.*;
 
 @SuppressWarnings("serial")
 public class Game extends JPanel {
-	
+
 
 	private int MapSelector;
 	private int screenSizeX = 1200;
 	private int screenSizeY = 800;
-    Player player;
-    ArrayList<Block> blocks = new ArrayList<Block>();
-    private boolean playing = true;
-    public boolean started = false;
-    
-    
-    
-    public boolean isPlaying() {
+	Player player;
+	ArrayList<Ball> balls = new ArrayList<Ball>();
+	ArrayList<Block> blocks = new ArrayList<Block>();
+	private boolean playing = true;
+	public boolean started = false;
+
+
+	public boolean isPlaying() {
 		return playing;
-		
+
 	}
-	
+
 	public Game() {
-    	
-    	setBorder(getBorder());
-        setFocusable(true);
-        setBackground(Color.GRAY);
-        setSize(1200, 800);
 
-        player = new Player(getWidth()/2, getHeight()-200);
+		setBorder(getBorder());
+		setFocusable(true);
+		setBackground(Color.GRAY);
+		setSize(800, 1000);
 
-        makeblocks();
-        addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent e) {
-            
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    System.out.println("Left");
-                    player.setLeft(true);
-                }
-                
-                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    System.out.println("Right");
-                    player.setRight(true);
-                }
-            	if (started == false ){
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                	System.out.println("Starting game!");
-                	player.setPlaying(true);                	
-                }
-            }
-            }
-            public void keyReleased(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    System.out.println("Released");
-                    player.setLeft(false);
-                } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    System.out.println("Released");
-                    player.setRight(false);
-                    started  = false;
-                }
-            }
-        });
+		player = new Player(getWidth() / 2, getHeight() - 200);
 
-      	
-        }
-	
+		makeblocks();
+		addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+
+				if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+					System.out.println("Left");
+					player.setLeft(true);
+				}
+
+				if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+					System.out.println("Right");
+					player.setRight(true);
+				}
+				if (started == false) {
+					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+						System.out.println("Starting game!");
+						player.setPlaying(true);
+					}
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+					System.out.println("Released");
+					player.setLeft(false);
+				} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+					System.out.println("Released");
+					player.setRight(false);
+					started = false;
+				}
+			}
+		});
+
+
+	}
+
+	private enum STATES {
+	MENU,
+	GAME
+} ;
+
+
+
+private STATES state = STATES.MENU;
 	
 
     private void makeblocks() {
@@ -85,6 +95,7 @@ public class Game extends JPanel {
 
 	            blocks.add(new BlueBlock((i * (55)) + 50, 220, 50, 50));
 	        }
+	        
 //    	switch (MapSelector) {
 //		case 1:
 //			  for (int i = 0; i < 12; i++) {
@@ -133,7 +144,7 @@ public class Game extends JPanel {
 	}
 
 	private void Collisions() {
-		Rectangle ballHitbox = new Rectangle(player.getLocX(), player.getLocY(), 20, 20);
+		Rectangle ballHitbox = new Rectangle(player.getLocX(), player.getLocY(), 15, 15);
 		Rectangle upper;
 		Rectangle lower;
 		Rectangle left;
@@ -155,6 +166,7 @@ public class Game extends JPanel {
 				}
 				if (ballHitbox.intersects(right) && player.getVectorX() < 0) {
 					player.ReverseX();
+					tempBlock = b;
 				}
 				if (ballHitbox.intersects(lower) && player.getVectorY() < 0) {
 					player.ReverseY();
@@ -173,8 +185,6 @@ public class Game extends JPanel {
 	public void update() {
 	
 		playing = player.update();
-		player.setLeft(false);
-		player.setRight(false);
 		Collisions();
 		repaint();
 	}
@@ -182,8 +192,12 @@ public class Game extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
      
-        player.DrawOval(g);
+        player.drawBall(g);
         player.drawPlayer(g);
+        for (Ball c : balls) {
+        	c.DrawOval(g);
+			
+		}
         for (Block b : blocks) {
             b.draw(g);
         }

@@ -21,9 +21,9 @@ public class Startmenu extends JPanel {
 		this.add(Map2,BorderLayout.LINE_END);
 		this.add(Map3,BorderLayout.PAGE_START);
 	
-
-	/*
-
+	
+	
+/*
 	Map1.addMouseListener(new MouseAdapter() {
 		public void mouseClicked(MouseEvent e) {
 		game.setMapSelector(1);

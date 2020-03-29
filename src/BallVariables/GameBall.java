@@ -19,7 +19,7 @@ public abstract class GameBall extends Ball {
 		this.x = x;
 		this.y = y;
 		size = 30;
-		speed = 3;
+		speed = 5;
 		vectorX = 1;
 		vectorY = 1;
 		
@@ -38,11 +38,16 @@ public abstract class GameBall extends Ball {
 		
 		Rectangle ballHitbox = new Rectangle(x - (size / 2), y - (size / 2), size, size);
 		
+	
+		ArrayList<Block> toRemove = new ArrayList<Block>();
 		for (Block b : blocks) {
-			if (b.intersects(ballHitbox)) {
-				blocks.remove(intersect(b));
+		            if (b.intersects(ballHitbox)) {
+		                toRemove.add(intersect(b));
 
-			}
+		            }
+		        }
+		for (Block b : toRemove) {
+		  blocks.remove(b);
 		}
 		
 		
@@ -72,12 +77,7 @@ public abstract class GameBall extends Ball {
 	
 	public boolean getLoss() {
 		return lossFlag;
-		
-		/*
-		 * i | ii
-		 * ii|i_ 
-		 * 
-		 */
+	
 	}
 
 }

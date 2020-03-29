@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 public abstract class GameState extends JPanel{
 	
 	public GameState() {
-		this.setFocusable(true);
+	requestFocus();
 	}
 	public boolean isPlaying() {
 		return true;

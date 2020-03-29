@@ -26,6 +26,7 @@ public class Frame extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+
 	}
 	public void run() {
 		final double fps = 60.0;
@@ -46,6 +47,7 @@ public class Frame extends JFrame {
 	
 	
 	public void update() {
+		gameState.requestFocus(true);
 		gameState.update();
 	result = result +1;
 	System.out.println(result);

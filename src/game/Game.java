@@ -14,6 +14,7 @@ import gamestates.GameState;
 @SuppressWarnings("serial")
 public class Game extends GameState {
 
+	GameState gamestate;
 	private Player player;
 	private GameBall ball;
 	private ArrayList<Block> blocks = new ArrayList<Block>();
@@ -26,7 +27,8 @@ public class Game extends GameState {
 	}
 
 	public Game(int bana) {
-
+		
+		setFocusable(true);
 		setBorder(getBorder());
 	
 		setBackground(Color.GRAY);
@@ -35,6 +37,7 @@ public class Game extends GameState {
 		player = new Player(getWidth() / 2, getHeight() - 200);
 		ball = new NormalBall(getWidth() / 2, getHeight() - 400);
 		makeblocks(bana);
+		setFocusable(true);
 		addKeyListener(new KeyAdapter() {
 			
 			public void keyPressed(KeyEvent e) {

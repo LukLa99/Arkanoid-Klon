@@ -1,21 +1,14 @@
 package ballVariables;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import BlockVariables.Block;
 
-public class SuperBall extends GameBall {
-	public SuperBall(int x, int y) {
-		super(50, 50);
+public class NormalBall extends GameBall{
+
+	public NormalBall(int x, int y) {
+		super(x, y);
 		
-	}
-	
-	public void draw(Graphics g) {
-		
-		g.setColor(Color.yellow);
-		super.draw(g);
 	}
 
 	@Override
@@ -28,23 +21,24 @@ public class SuperBall extends GameBall {
 
 		Block toRemove = null;
 		if (ballHitbox.intersects(left) && getVectorX() > 0) {
-			
+			reverseX();
 			toRemove = b;
 		}
 		if (ballHitbox.intersects(right) && getVectorX() < 0) {
-			
+			reverseX();
 			toRemove = b;
 		}
 		if (ballHitbox.intersects(lower) && getVectorY() < 0) {
-			
+			reverseY();
 			toRemove = b;
 		}
 		if (ballHitbox.intersects(upper) && getVectorY() > 0) {
-			
+			reverseY();
 			toRemove = b;
 		}
 
 		return toRemove;
+		
 	}
 
 }

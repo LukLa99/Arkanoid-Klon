@@ -1,5 +1,4 @@
 package BlockVariables;
-
 import java.awt.*;
 
 public class GreenBlock extends Block {
@@ -10,11 +9,4 @@ public class GreenBlock extends Block {
 
 	}
 	
-
-		
-		
-		
-		
-	
-	}
-
+}

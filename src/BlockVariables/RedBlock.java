@@ -1,7 +1,7 @@
 package BlockVariables;
 
 import java.awt.Color;
-import java.awt.Rectangle;
+//import java.awt.Rectangle;
 
 public class RedBlock extends Block {
 

@@ -9,6 +9,7 @@ import BlockVariables.*;
 
 import ballVariables.GameBall;
 import ballVariables.NormalBall;
+import ballVariables.SuperBall;
 import gamestates.GameState;
 
 @SuppressWarnings("serial")
@@ -17,6 +18,8 @@ public class Game extends GameState {
 	GameState gamestate;
 	private Player player;
 	private GameBall ball;
+	private SuperBall SBall;
+	private int balltype = 0;
 	private ArrayList<Block> blocks = new ArrayList<Block>();
 	private boolean playing = true;
 	private boolean started = false;
@@ -27,19 +30,29 @@ public class Game extends GameState {
 	}
 
 	public Game(int bana) {
-		
+
 		setFocusable(true);
 		setBorder(getBorder());
-	
+
 		setBackground(Color.GRAY);
 		setSize(800, 1000);
 
 		player = new Player(getWidth() / 2, getHeight() - 200);
-		ball = new NormalBall(getWidth() / 2, getHeight() - 400);
+
+		switch (balltype) {
+		case 0:
+			ball = new NormalBall(getWidth() / 2, getHeight() - 400);
+			break;
+		case 1:
+			SBall = new SuperBall(getWidth()/ 2, getHeight() -400);
+		default:
+			break;
+		}
+
 		makeblocks(bana);
 		setFocusable(true);
 		addKeyListener(new KeyAdapter() {
-			
+
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 					System.out.println("Left");
@@ -51,13 +64,14 @@ public class Game extends GameState {
 					player.setRight(true);
 				}
 				if (started == false) {
-					if (e.getKeyCode() == KeyEvent.VK_ENTER) { // Koden kommer aldrig hit.
+					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 						System.out.println("here");
 						System.out.println("Starting game!");
 						started = true;
 					}
 				}
 			}
+
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 					System.out.println("Released");
@@ -127,26 +141,49 @@ public class Game extends GameState {
 	}
 
 	public void update() {
-		
-		if (started) {
-			ball.update(blocks, player);
-			if (ball.getLoss()) {
-				playing = false;
 
+		if (balltype == 0) {
+			;
+			if (started) {
+				ball.update(blocks, player);
+				if (ball.getLoss()) {
+					playing = false;
+
+				}
+				player.update();
 			}
-			player.update();
 		}
 
+		else if (balltype == 1) {
+
+			if (started) {
+				SBall.update(blocks, player);
+				if (SBall.getLoss()) {
+					playing = false;
+
+				}
+				player.update();
+
+			}
+		}
 	}
 
 	protected void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
-		ball.draw(g);
+		if (balltype == 0) {
+			ball.draw(g);
+		}
+
+		else if (balltype == 1) {
+			SBall.draw(g);
+		}
+
 		player.drawPlayer(g);
 
 		for (Block b : blocks) {
 			b.draw(g);
+
 		}
 
 	}

@@ -10,18 +10,33 @@ public abstract class Block extends Rectangle {
 
 	private Color color;
 	private boolean Collide = false;
+	public int score;
+	public int scoretotal;
+	public int getScoretotal() {
+		return scoretotal;
+	}
+
 	Player player;
 	
 	
-	public Block(int x, int y, int w, int h) {
+	public Block(int x, int y, int w, int h, int score) {
 		this.x = x;
 		this.y = y;
 		this.width = w;
 		this.height = h;
+		this.score = 0;
+	
 	}
 
 	
 	
+	
+	public void addScore() {
+		scoretotal = scoretotal + score;
+	}
+
+
+
 	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillRect(x, y, width, height);
@@ -38,6 +53,7 @@ public abstract class Block extends Rectangle {
 	public void collided() {
 		Collide = true;
 	}
+	
 
 
 /*

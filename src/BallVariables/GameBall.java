@@ -54,16 +54,28 @@ public abstract class GameBall extends Ball {
 		if (getHitbox().intersects(p.getHitbox())) {
 			System.out.println("PADDLE	");
 			reverseY();
+			reverseX();
 			while (getHitbox().intersects(p.getHitbox())) {
 				
 				moveXY();
 
 			}
+			
+
+		}
+//		else if (getHitbox().intersects(p.getHitbox())) {
+//			System.out.println("PADDLE	");
+//			reverseY();
+//			while (getHitbox().intersects(p.getHitbox())) {
+//				//Studsa andra hållet
+//				
+//
+//			}
 
 		}
 		
 		
-	}
+
 	
 	protected abstract Block intersect(Block b);
 	
@@ -73,6 +85,7 @@ public abstract class GameBall extends Ball {
 	public Rectangle getHitbox() {
 
 		return new Rectangle(x - (size / 2), y - (size / 2), size, size);
+		
 	}
 	
 	public boolean getLoss() {

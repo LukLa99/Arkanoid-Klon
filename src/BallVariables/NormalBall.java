@@ -13,6 +13,7 @@ public class NormalBall extends GameBall{
 
 	@Override
 	protected Block intersect(Block b) {
+		b.addScore();
 		Rectangle ballHitbox = getHitbox();
 		Rectangle upper = new Rectangle(b.x, b.y, b.width, 1);
 		Rectangle lower = new Rectangle(b.x, (b.y + b.height - 1), b.width, 1);
@@ -23,6 +24,7 @@ public class NormalBall extends GameBall{
 		if (ballHitbox.intersects(left) && getVectorX() > 0) {
 			reverseX();
 			toRemove = b;
+			
 		}
 		if (ballHitbox.intersects(right) && getVectorX() < 0) {
 			reverseX();
@@ -36,7 +38,7 @@ public class NormalBall extends GameBall{
 			reverseY();
 			toRemove = b;
 		}
-
+		System.out.println(b.getScoretotal());
 		return toRemove;
 		
 	}

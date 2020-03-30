@@ -12,14 +12,14 @@ public abstract class GameBall extends Ball {
 	
 	
 	protected boolean lossFlag = false;
-	
-	
+	public int normalspeed = 10;
+	public int slowspeed = 5;
 
 	public GameBall(int x, int y) {
 		this.x = x;
 		this.y = y;
 		size = 30;
-		speed = 5;
+		speed = normalspeed;
 		vectorX = 1;
 		vectorY = 1;
 		
@@ -51,11 +51,13 @@ public abstract class GameBall extends Ball {
 		}
 		
 		
-		if (getHitbox().intersects(p.getHitbox())) {
-			System.out.println("PADDLE	");
+		if (getHitbox().intersects(p.getRightHitbox())) {
+	
+			System.out.println("PADDLE	RIGHT");
+	
 			reverseY();
-			reverseX();
-			while (getHitbox().intersects(p.getHitbox())) {
+		
+			while (getHitbox().intersects(p.getRightHitbox())) {
 				
 				moveXY();
 
@@ -63,14 +65,16 @@ public abstract class GameBall extends Ball {
 			
 
 		}
-//		else if (getHitbox().intersects(p.getHitbox())) {
-//			System.out.println("PADDLE	");
-//			reverseY();
-//			while (getHitbox().intersects(p.getHitbox())) {
-//				//Studsa andra hållet
-//				
-//
-//			}
+		else if (getHitbox().intersects(p.getLeftHitbox())) {
+			System.out.println("PADDLE	LEFT");
+			reverseX();
+			reverseY();
+			while (getHitbox().intersects(p.getLeftHitbox())) {
+				
+				
+
+			}
+		}
 
 		}
 		

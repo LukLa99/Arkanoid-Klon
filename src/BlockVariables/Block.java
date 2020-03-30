@@ -9,7 +9,6 @@ import game.*;
 public abstract class Block extends Rectangle {
 
 	private Color color;
-	private boolean Collide = false;
 	public int score;
 	public int scoretotal;
 	public int getScoretotal() {
@@ -50,10 +49,6 @@ public abstract class Block extends Rectangle {
 		this.color = color;
 	}
 
-	public void collided() {
-		Collide = true;
-	}
-	
 
 
 /*

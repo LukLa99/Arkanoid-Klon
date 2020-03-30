@@ -23,22 +23,28 @@ public class NormalBall extends GameBall{
 		Block toRemove = null;
 		if (ballHitbox.intersects(left) && getVectorX() > 0) {
 			reverseX();
+			normalspeed++;
 			toRemove = b;
 			
 		}
 		if (ballHitbox.intersects(right) && getVectorX() < 0) {
 			reverseX();
+			normalspeed++;
 			toRemove = b;
+			System.out.println(normalspeed);
 		}
 		if (ballHitbox.intersects(lower) && getVectorY() < 0) {
 			reverseY();
+			normalspeed+=5;
 			toRemove = b;
 		}
 		if (ballHitbox.intersects(upper) && getVectorY() > 0) {
 			reverseY();
+			normalspeed++;
 			toRemove = b;
 		}
 		System.out.println(b.getScoretotal());
+		
 		return toRemove;
 		
 	}

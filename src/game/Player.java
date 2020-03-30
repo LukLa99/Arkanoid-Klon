@@ -66,8 +66,20 @@ public class Player {
 		right = b;
 	}
 	
-	public Rectangle getHitbox() {
+	public Rectangle getRightHitbox() {
+		
+
+		
 		return new Rectangle(x - (b / 2), y - (h / 2), b, h);
+		
+	}
+
+	public Rectangle getLeftHitbox() {
+		
+
+		//Utgå  ifrån nollpunkten
+		return new Rectangle(x - (b / 2), y - (h / 2), b, h);
+		
 	}
 	
 }

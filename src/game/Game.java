@@ -19,7 +19,7 @@ public class Game extends GameState {
 	private Player player;
 	private GameBall ball;
 	private SuperBall SBall;
-	private int balltype = 0;
+	private int balltype = 1;
 	private ArrayList<Block> blocks = new ArrayList<Block>();
 	private boolean playing = true;
 	private boolean started = false;

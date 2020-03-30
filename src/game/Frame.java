@@ -49,8 +49,8 @@ public class Frame extends JFrame {
 	public void update() {
 		gameState.requestFocus(true);
 		gameState.update();
-	//result = result +1;
-//	System.out.println(result);
+	result = result +1;
+	System.out.println(result);
 		
 		GameState newState = gameState.changeState();
 		

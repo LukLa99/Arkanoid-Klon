@@ -1,5 +1,6 @@
 package ballVariables;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -8,12 +9,15 @@ import blockVariables.Block;
 import game.*;
 
 @SuppressWarnings("serial")
-public abstract class GameBall extends Ball {
+public class GameBall extends Ball {
 	
 	
 	protected boolean lossFlag = false;
-	public int normalspeed = 10;
-	public int slowspeed = 5;
+	private static int normalspeed = 10;
+	private static int slowspeed = 5;
+	private boolean superball = false;
+	private int points = 0;
+	
 
 	public GameBall(int x, int y) {
 		this.x = x;
@@ -52,7 +56,7 @@ public abstract class GameBall extends Ball {
 		
 		if (getHitbox().intersects(p.getRightHitbox())) {
 	
-			System.out.println("PADDLE	RIGHT");
+			System.out.println("PADDLE RIGHT");
 	
 			reverseY();
 		
@@ -80,8 +84,56 @@ public abstract class GameBall extends Ball {
 		
 
 	
-	protected abstract Block intersect(Block b);
-	
+	protected Block intersect(Block b) {
+		b.addScore();
+		Rectangle ballHitbox = getHitbox();
+		Rectangle upper = new Rectangle(b.x, b.y, b.width, 1);
+		Rectangle lower = new Rectangle(b.x, (b.y + b.height - 1), b.width, 1);
+		Rectangle left = new Rectangle(b.x, b.y, 1, b.height);
+		Rectangle right = new Rectangle((b.x + b.width - 1), b.y, 1, b.height);
+
+		Block toRemove = null;
+		if (ballHitbox.intersects(left) && getVectorX() > 0) {
+			if (!superball) {
+				reverseX();
+			}
+			toRemove = b;
+			
+		}
+		if (ballHitbox.intersects(right) && getVectorX() < 0) {
+			if (!superball) {
+				reverseX();
+			}
+			toRemove = b;
+		}
+		if (ballHitbox.intersects(lower) && getVectorY() < 0) {
+			if (!superball) {
+				reverseY();
+			}
+			toRemove = b;
+		}
+		if (ballHitbox.intersects(upper) && getVectorY() > 0) {
+			if (!superball) {
+				reverseY();
+			}
+			toRemove = b;
+		}
+		System.out.println(b.getScoretotal());
+		points++;
+		return toRemove;
+		
+	}
+	@Override
+	public void draw(Graphics g) {
+		if (superball) {
+			g.setColor(Color.YELLOW);
+		} else {
+			g.setColor(Color.BLACK);
+		}
+		g.fillOval(x - (size / 2), y - (size / 2), size, size);
+		
+
+	}
 
 
 
@@ -95,5 +147,21 @@ public abstract class GameBall extends Ball {
 		return lossFlag;
 	
 	}
+	
+	public int getpoints() {
+		return points;
+	}
+	
+	public void gofast() {
+		speed = normalspeed;
+	}
+	public void goslow() {
+		speed = slowspeed;
+	}
+	public void makesuper() {
+		superball = true;
+	}
+	//kolla lukas wowowow
+	//ANVÄND
 
 }

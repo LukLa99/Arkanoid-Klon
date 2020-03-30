@@ -29,7 +29,13 @@ public class Highscores extends GameState implements Serializable {
 	// int i;
 
 	public Highscores() {
-
+		int highscore;
+		try {
+			highscore = readHighscore();
+		} catch (FileNotFoundException e) {
+			highscore = 0;
+			
+		}
 		buttonPressed = 0;
 		knappar = new ArrayList<Knapp>();
 		setBackground(Color.WHITE);
@@ -49,7 +55,7 @@ public class Highscores extends GameState implements Serializable {
 		b.add(Box.createHorizontalGlue());
 		add(Box.createVerticalGlue());
 
-		add(new JLabel("Highscore är: ", JLabel.CENTER));
+		add(new JLabel("Highscore är: " + Integer.toString(highscore), JLabel.CENTER));
 		add(Box.createVerticalGlue());
 		add(b);
 		add(Box.createVerticalGlue());
@@ -93,12 +99,13 @@ public class Highscores extends GameState implements Serializable {
 			try {
 				FileWriter writer = new FileWriter(new File(highscorePath), false);
 				writer.write(String.valueOf(score));
+				writer.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
+
 
 	public static int readHighscore() throws FileNotFoundException {
 		try {

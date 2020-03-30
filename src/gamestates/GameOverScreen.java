@@ -10,13 +10,15 @@ import javax.imageio.ImageIO;
 public class GameOverScreen extends GameState {
 
 	private BufferedImage bg;
-	public GameOverScreen() {
+	int points;
+	public GameOverScreen(int points) {
+		this.points = points;
 		try {
 			bg = ImageIO.read(new File("src/gameover.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		Highscores.submitHighscore(points);
 	}
 	@Override
 	public void update() {

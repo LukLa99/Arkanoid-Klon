@@ -6,8 +6,6 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import ballVariables.GameBall;
-import ballVariables.NormalBall;
-import ballVariables.SuperBall;
 import blockVariables.*;
 import gamestates.GameOverScreen;
 import gamestates.GameState;
@@ -17,8 +15,6 @@ public class Game extends GameState {
 
 	private Player player;
 	private GameBall ball;
-	private SuperBall SBall;
-	private int balltype = 1;
 	private ArrayList<Block> blocks = new ArrayList<Block>();
 	private boolean playing = true;
 	private boolean started = false;
@@ -34,18 +30,10 @@ public class Game extends GameState {
 
 		setBackground(Color.GRAY);
 		setSize(800, 1000);
-
+		ball = new GameBall(500, 500);
 		player = new Player(getWidth() / 2, getHeight() - 200);
 
-		switch (balltype) {
-		case 0:
-			ball = new NormalBall(getWidth() / 2, getHeight() - 400);
-			break;
-		case 1:
-			SBall = new SuperBall(getWidth()/ 2, getHeight() -400);
-		default:
-			break;
-		}
+		
 
 		makeblocks(bana);
 		setFocusable(true);
@@ -61,6 +49,8 @@ public class Game extends GameState {
 					System.out.println("Right");
 					player.setRight(true);
 				}
+				
+					
 				if (started == false) {
 					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 						System.out.println("here");
@@ -140,43 +130,26 @@ public class Game extends GameState {
 
 	public void update() {
 
-		if (balltype == 0) {
-			;
-			if (started) {
-				ball.update(blocks, player);
-				if (ball.getLoss()) {
-					playing = false;
-
-				}
-				player.update();
-			}
-		}
-
-		else if (balltype == 1) {
-
-			if (started) {
-				SBall.update(blocks, player);
-				if (SBall.getLoss()) {
-					playing = false;
-
-				}
-				player.update();
+		
+		
+		if (started) {
+			ball.update(blocks, player);
+			if (ball.getLoss()) {
+				playing = false;
 
 			}
+			player.update();
 		}
+	
+
+		
 	}
 
 	protected void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
-		if (balltype == 0) {
-			ball.draw(g);
-		}
-
-		else if (balltype == 1) {
-			SBall.draw(g);
-		}
-
+		
+		ball.draw(g);
 		player.drawPlayer(g);
 
 		for (Block b : blocks) {
@@ -190,7 +163,7 @@ public class Game extends GameState {
 	public GameState changeState() {
 		
 		if (!playing) {
-			return new GameOverScreen();
+			return new GameOverScreen(ball.getpoints());
 		} else {
 			return null;
 		}

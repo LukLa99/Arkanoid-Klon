@@ -25,7 +25,6 @@ public abstract class GameBall extends Ball {
 		
 	}
 
-	
 
 	public void update(ArrayList<Block> blocks, Player p) {
 		if (y > lowerBound) {

@@ -12,8 +12,6 @@ public class BlueBlock extends Block {
 		setColor(new Color(50, 189, 239));
 	}
 
-
-
-	}
+}
 
 

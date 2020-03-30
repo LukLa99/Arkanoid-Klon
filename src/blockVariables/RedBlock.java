@@ -10,6 +10,4 @@ public class RedBlock extends Block {
 		setColor(Color.RED);
 	}
 
-
-
 }

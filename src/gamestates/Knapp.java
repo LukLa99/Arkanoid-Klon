@@ -33,6 +33,7 @@ public class Knapp extends JPanel{
 		
 		
 	}
+	
 	public boolean getClicked() {
 		return clickedFlag;
 	}

@@ -17,7 +17,6 @@ public abstract class Block extends Rectangle {
 
 	Player player;
 	
-	
 	public Block(int x, int y, int w, int h, int score) {
 		this.x = x;
 		this.y = y;

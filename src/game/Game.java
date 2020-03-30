@@ -9,12 +9,12 @@ import ballVariables.GameBall;
 import ballVariables.NormalBall;
 import ballVariables.SuperBall;
 import blockVariables.*;
+import gamestates.GameOverScreen;
 import gamestates.GameState;
 
 @SuppressWarnings("serial")
 public class Game extends GameState {
 
-	GameState gamestate;
 	private Player player;
 	private GameBall ball;
 	private SuperBall SBall;
@@ -23,10 +23,9 @@ public class Game extends GameState {
 	private boolean playing = true;
 	private boolean started = false;
 
-	@Override
-	public boolean isPlaying() {
-		return playing;
-	}
+	
+	
+	
 
 	public Game(int bana) {
 
@@ -189,7 +188,11 @@ public class Game extends GameState {
 
 	@Override
 	public GameState changeState() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (!playing) {
+			return new GameOverScreen();
+		} else {
+			return null;
+		}
 	}
 }

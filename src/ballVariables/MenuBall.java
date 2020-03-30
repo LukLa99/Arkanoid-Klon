@@ -10,7 +10,4 @@ public class MenuBall extends Ball{
 		size = 30;
 		speed = 3;
 	}
-	
-	
-
 }

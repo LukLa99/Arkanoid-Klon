@@ -46,5 +46,4 @@ public class SuperBall extends GameBall {
 
 		return toRemove;
 	}
-
 }

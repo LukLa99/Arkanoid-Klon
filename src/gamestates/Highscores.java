@@ -2,30 +2,21 @@ package gamestates;
 
 import java.awt.Color;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-//import java.util.Formatter;
 import java.util.Scanner;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 
-import ballVariables.Ball;
 import ballVariables.MenuBall;
-import ballVariables.NormalBall;
-
-
 
 public class Highscores extends GameState implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -34,40 +25,37 @@ public class Highscores extends GameState implements Serializable {
 	private int buttonPressed;
 	private MenuBall petBall;
 	private ArrayList<Knapp> knappar;
-	
 
-	//int i;
-	
-	public Highscores () {
-			
+	// int i;
+
+	public Highscores() {
+
 		buttonPressed = 0;
 		knappar = new ArrayList<Knapp>();
 		setBackground(Color.WHITE);
 		petBall = new MenuBall(700, 300);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
+
 		knappar.add(new Knapp("Välj bana", 1, Color.PINK));
-		
-Box b = new Box(BoxLayout.X_AXIS);
-		
+
+		Box b = new Box(BoxLayout.X_AXIS);
+
 		b.add(Box.createHorizontalGlue());
-		
-		
-		
+
 		for (Knapp k : knappar) {
 			b.add(k);
 			b.add(Box.createHorizontalStrut(10));
 		}
 		b.add(Box.createHorizontalGlue());
 		add(Box.createVerticalGlue());
-		
-		
+
 		add(new JLabel("Highscore är: ", JLabel.CENTER));
 		add(Box.createVerticalGlue());
 		add(b);
 		add(Box.createVerticalGlue());
-		
+
 	}
+
 	public void update() {
 		petBall.update();
 		for (Knapp k : knappar) {
@@ -76,14 +64,16 @@ Box b = new Box(BoxLayout.X_AXIS);
 			}
 		}
 	}
-	
+
 	public GameState changeState() {
-		
+
 		switch (buttonPressed) {
-		case 1: return new MapSelect();
-		default: return null;
+		case 1:
+			return new MapSelect();
+		default:
+			return null;
 		}
-}
+	}
 
 	public static void submitHighscore(int score) {
 		int oldScore;
@@ -109,6 +99,7 @@ Box b = new Box(BoxLayout.X_AXIS);
 			}
 		}
 	}
+
 	public static int readHighscore() throws FileNotFoundException {
 		try {
 			Scanner s = new Scanner(new File(highscorePath));
@@ -120,18 +111,11 @@ Box b = new Box(BoxLayout.X_AXIS);
 				s.close();
 				return 0;
 			}
-			
-		} catch (FileNotFoundException e){
+
+		} catch (FileNotFoundException e) {
 			throw e;
 		}
-		
+
 	}
-		
-		
 
-	
-		
-	
 }
-
-

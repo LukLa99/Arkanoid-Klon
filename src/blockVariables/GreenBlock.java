@@ -8,5 +8,4 @@ public class GreenBlock extends Block {
 		setColor(Color.GREEN);
 
 	}
-	
 }

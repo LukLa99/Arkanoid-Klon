@@ -33,6 +33,6 @@ public class GameOverScreen extends GameState {
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		super.paintComponent(g);
-		
+		g.drawImage(bg, 0, 0, getWidth(), getHeight(), null, null);
 	}
 }

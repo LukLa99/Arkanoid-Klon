@@ -78,7 +78,7 @@ public abstract class Ball {
 			}
 		}
 	}
-
+	
 	
 	public int getX() {
 

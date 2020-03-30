@@ -48,5 +48,4 @@ public class NormalBall extends GameBall{
 		return toRemove;
 		
 	}
-
 }

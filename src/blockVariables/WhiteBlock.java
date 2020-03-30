@@ -8,4 +8,5 @@ public class WhiteBlock extends Block{
 		super(x, y, W, H,10);
 		setColor(Color.WHITE);
 	}
+	
 }

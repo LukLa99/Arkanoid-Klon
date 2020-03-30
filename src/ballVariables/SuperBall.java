@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import BlockVariables.Block;
+import blockVariables.Block;
 
 public class SuperBall extends GameBall {
 	public SuperBall(int x, int y) {

@@ -1,4 +1,4 @@
-package BlockVariables;
+package blockVariables;
 
 import java.awt.Color;
 

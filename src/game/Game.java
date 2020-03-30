@@ -5,11 +5,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import BlockVariables.*;
-
 import ballVariables.GameBall;
 import ballVariables.NormalBall;
 import ballVariables.SuperBall;
+import blockVariables.*;
 import gamestates.GameState;
 
 @SuppressWarnings("serial")

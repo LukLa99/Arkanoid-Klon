@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-import BlockVariables.Block;
+import blockVariables.Block;
 import game.*;
 
 @SuppressWarnings("serial")

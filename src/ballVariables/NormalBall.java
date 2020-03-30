@@ -2,7 +2,7 @@ package ballVariables;
 
 import java.awt.Rectangle;
 
-import BlockVariables.Block;
+import blockVariables.Block;
 
 public class NormalBall extends GameBall{
 

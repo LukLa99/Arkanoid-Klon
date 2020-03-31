@@ -50,19 +50,18 @@ public class GameBall extends Ball {
 			
 			 if (b.intersects(ballHitbox)) {
 		                toRemove.add(intersect(b));
+		               
 
 		            }
 		        }
 		for (Block b : toRemove) {
 			
-			if(b instanceof PersistantBlock){
-				return ;}
+			if(!(b instanceof PersistantBlock)){
+				blocks.remove(b);
 			
-			else {
-				
+		  
 			}
-		  blocks.remove(b);
-		}
+			}
 		
 		
 		if (getHitbox().intersects(p.getRightHitbox())) {
@@ -137,7 +136,6 @@ public class GameBall extends Ball {
 		System.out.println(b.getScoretotal());
 		points++;
 		return toRemove;
-		
 	}
 	public boolean isSuperball() {
 		return superball;

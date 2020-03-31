@@ -25,9 +25,6 @@ public class Highscores extends GameState implements Serializable {
 	private int buttonPressed;
 	private MenuBall petBall;
 	private ArrayList<Knapp> knappar;
-
-	// int i;
-
 	public Highscores() {
 		int highscore;
 		try {

@@ -14,7 +14,7 @@ public class GameBall extends Ball {
 	
 	protected boolean lossFlag = false;
 	private static int normalspeed = 10;
-	private static int slowspeed = 5;
+	private static int slowspeed = 1;
 	private boolean superball = false;
 	
 	private int points = 0;
@@ -86,6 +86,7 @@ public class GameBall extends Ball {
 
 	
 	protected Block intersect(Block b) {
+		b.getPowerup();
 		b.addScore();
 		Rectangle ballHitbox = getHitbox();
 		Rectangle upper = new Rectangle(b.x, b.y, b.width, 1);
@@ -93,8 +94,9 @@ public class GameBall extends Ball {
 		Rectangle left = new Rectangle(b.x, b.y, 1, b.height);
 		Rectangle right = new Rectangle((b.x + b.width - 1), b.y, 1, b.height);
 		Block toRemove = null;
+		
 		if (ballHitbox.intersects(left) && getVectorX() > 0) {
-			
+			b.getPowerup();
 			if (!superball) {
 				reverseX();
 			}
@@ -102,18 +104,21 @@ public class GameBall extends Ball {
 			
 		}
 		if (ballHitbox.intersects(right) && getVectorX() < 0) {
+			b.getPowerup();
 			if (!superball) {
 				reverseX();
 			}
 			toRemove = b;
 		}
 		if (ballHitbox.intersects(lower) && getVectorY() < 0) {
+			b.getPowerup();
 			if (!superball) {
 				reverseY();
 			}
 			toRemove = b;
 		}
 		if (ballHitbox.intersects(upper) && getVectorY() > 0) {
+			b.getPowerup();
 			if (!superball) {
 				reverseY();
 			}
@@ -124,6 +129,11 @@ public class GameBall extends Ball {
 		return toRemove;
 		
 	}
+	public boolean isSuperball() {
+		return superball;
+	}
+
+
 	@Override
 	public void draw(Graphics g) {
 		if (superball) {
@@ -161,6 +171,9 @@ public class GameBall extends Ball {
 	}
 	public void makesuper() {
 		superball = true;
+	}
+	public void makeunsuper() {
+		superball = false;
 	}
 	
 

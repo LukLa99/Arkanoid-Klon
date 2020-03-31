@@ -1,13 +1,24 @@
 package blockVariables;
-
-import java.awt.Color;
-//import java.awt.Rectangle;
+import java.awt.*;
+import ballVariables.*;
+import ballVariables.GameBall;
 
 public class RedBlock extends Block {
 
-	public RedBlock(int x, int y, int W, int H) {
-		super(x, y, W, H,20);
+	boolean ballCollision = false;
+	 
+	public RedBlock(int x, int y, int w, int h, GameBall ball) {
+		super(x, y, w, h,25, ball);
 		setColor(Color.RED);
+
 	}
 
+
+	@Override
+	public void getPowerup() {
+
+		
+	}
+	
+	
 }

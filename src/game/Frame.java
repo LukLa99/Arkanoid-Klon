@@ -11,10 +11,10 @@ import gamestates.MapSelect;
 import gamestates.Menu;
 
 public class Frame extends JFrame {
-	// public Startmenu menu;
+	
 	public GameState gameState;
 
-	int result = 0;
+	
 
 	public Frame() {
 		super("New Super Original not Arkanoid game");
@@ -49,8 +49,8 @@ public class Frame extends JFrame {
 	public void update() {
 		gameState.requestFocus(true);
 		gameState.update();
-		result = result + 1;
-		System.out.println(result);
+		
+		
 
 		GameState newState = gameState.changeState();
 

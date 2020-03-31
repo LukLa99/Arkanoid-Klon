@@ -4,20 +4,26 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import ballVariables.GameBall;
 import game.*;
 
 public abstract class Block extends Rectangle {
-
+	GameBall ball;
 	private Color color;
 	public int score;
 	public int scoretotal;
 	public int getScoretotal() {
 		return scoretotal;
+	
+	
+	
+	
 	}
 
 	Player player;
 	
-	public Block(int x, int y, int w, int h, int score) {
+	public Block(int x, int y, int w, int h, int score, GameBall ball) {
+		this.ball = ball;;
 		this.x = x;
 		this.y = y;
 		this.width = w;
@@ -27,6 +33,9 @@ public abstract class Block extends Rectangle {
 	}
 
 	
+	public abstract void getPowerup();
+		
+		
 	
 	
 	public void addScore() {
@@ -50,8 +59,6 @@ public abstract class Block extends Rectangle {
 
 
 
-
-	
 
 }
 

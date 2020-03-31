@@ -25,6 +25,10 @@ public abstract class Ball {
 		y += speed * vectorY;
 	}
 
+	public int getSpeed() {
+		return speed;
+	}
+
 	public void reverseY() {
 		vectorY *= -1;
 	}

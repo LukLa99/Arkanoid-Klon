@@ -6,9 +6,9 @@ import ballVariables.GameBall;
 public class GreenBlock extends Block {
 
 	boolean ballCollision = false;
-	GameBall ball;
-	public GreenBlock(int x, int y, int w, int h) {
-		super(x, y, w, h,25);
+	
+	public GreenBlock(int x, int y, int w, int h, GameBall ball) {
+		super(x, y, w, h,25, ball);
 		setColor(Color.GREEN);
 
 	}
@@ -21,6 +21,17 @@ public class GreenBlock extends Block {
 		return ballCollision;
 			
 	}
+
+	@Override
+	public void getPowerup() {
+		if (ball.isSuperball() == false ) {
+		ball.makesuper();
+		
+	}
+		else {
+			ball.makeunsuper();
+		}
 	
 	
+}
 }

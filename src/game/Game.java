@@ -80,9 +80,9 @@ public class Game extends GameState {
 			System.out.println("Classic");
 
 			for (int i = 0; i < 12; i++) {
-				blocks.add(new GreenBlock((i * (55)) + 50, 100, 50, 50));
-				blocks.add(new RedBlock((i * (55)) + 50, 160, 50, 50));
-				blocks.add(new BlueBlock((i * (55)) + 50, 220, 50, 50));
+				blocks.add(new GreenBlock((i * (55)) + 50, 100, 50, 50, ball));
+				blocks.add(new RedBlock((i * (55)) + 50, 160, 50, 50,ball));
+				blocks.add(new BlueBlock((i * (55)) + 50, 220, 50, 50,ball));
 			}
 			break;
 
@@ -90,12 +90,12 @@ public class Game extends GameState {
 			System.out.println("SVP");
 
 			for (int i = 0; i < 12; i++) {
-				blocks.add(new BlueBlock((i * (55)) + 50, 0, 50, 50));
-				blocks.add(new WhiteBlock((i * (55)) + 50, 50, 50, 50));
-				blocks.add(new BlueBlock((i * (55)) + 50, 100, 50, 50));
-				blocks.add(new WhiteBlock((i * (55)) + 50, 150, 50, 50));
-				blocks.add(new WhiteBlock((i * (55)) + 50, 250, 50, 50));
-				blocks.add(new BlueBlock((i * (55)) + 50, 300, 50, 50));
+				blocks.add(new BlueBlock((i * (55)) + 50, 0, 50, 50,ball));
+				blocks.add(new WhiteBlock((i * (55)) + 50, 50, 50, 50, ball));
+				blocks.add(new BlueBlock((i * (55)) + 50, 100, 50, 50,ball));
+				blocks.add(new WhiteBlock((i * (55)) + 50, 150, 50, 50,ball));
+				blocks.add(new WhiteBlock((i * (55)) + 50, 250, 50, 50,ball));
+				blocks.add(new BlueBlock((i * (55)) + 50, 300, 50, 50, ball));
 			}
 
 			break;
@@ -103,22 +103,22 @@ public class Game extends GameState {
 		case 3:
 			System.out.println("Staircase");
 			for (int i = 0; i < 7; i++) {
-				blocks.add(new RedBlock((i * (45)) + 50, 10, 40, 40));
+				blocks.add(new RedBlock((i * (45)) + 50, 10, 40, 40, ball));
 			}
 			for (int i = 0; i < 10; i++) {
-				blocks.add(new GreenBlock((i * (45)) + 50, 60, 40, 40));
+				blocks.add(new GreenBlock((i * (45)) + 50, 60, 40, 40, ball));
 			}
 			for (int i = 0; i < 13; i++) {
 
-				blocks.add(new BlueBlock((i * (45)) + 50, 110, 40, 40));
+				blocks.add(new BlueBlock((i * (45)) + 50, 110, 40, 40, ball));
 			}
 
 			for (int i = 0; i < 16; i++) {
 
-				blocks.add(new WhiteBlock((i * (45)) + 50, 160, 40, 40));
-				blocks.add(new GreenBlock((i * (45)) + 50, 210, 40, 40));
-				blocks.add(new RedBlock((i * (45)) + 50, 260, 40, 40));
-				blocks.add(new BlueBlock((i * (45)) + 50, 310, 40, 40));
+				blocks.add(new WhiteBlock((i * (45)) + 50, 160, 40, 40, ball));
+				blocks.add(new GreenBlock((i * (45)) + 50, 210, 40, 40, ball));
+				blocks.add(new RedBlock((i * (45)) + 50, 260, 40, 40, ball));
+				blocks.add(new BlueBlock((i * (45)) + 50, 310, 40, 40, ball));
 			}
 			break;
 

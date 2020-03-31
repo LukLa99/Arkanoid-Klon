@@ -22,18 +22,18 @@ public class GameOverScreen extends GameState {
 	}
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public GameState changeState() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
+		
 		super.paintComponent(g);
 		g.drawImage(bg, 0, 0, getWidth(), getHeight(), null, null);
 	}

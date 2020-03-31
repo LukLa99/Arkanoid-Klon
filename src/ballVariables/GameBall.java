@@ -16,6 +16,7 @@ public class GameBall extends Ball {
 	private static int normalspeed = 10;
 	private static int slowspeed = 5;
 	private boolean superball = false;
+	
 	private int points = 0;
 	
 
@@ -91,9 +92,9 @@ public class GameBall extends Ball {
 		Rectangle lower = new Rectangle(b.x, (b.y + b.height - 1), b.width, 1);
 		Rectangle left = new Rectangle(b.x, b.y, 1, b.height);
 		Rectangle right = new Rectangle((b.x + b.width - 1), b.y, 1, b.height);
-
 		Block toRemove = null;
 		if (ballHitbox.intersects(left) && getVectorX() > 0) {
+			
 			if (!superball) {
 				reverseX();
 			}
@@ -161,7 +162,6 @@ public class GameBall extends Ball {
 	public void makesuper() {
 		superball = true;
 	}
-	//kolla lukas wowowow
-	//ANVÄND
+	
 
 }

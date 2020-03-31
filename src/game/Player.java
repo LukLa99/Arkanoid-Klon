@@ -70,7 +70,7 @@ public class Player {
 
 		
 		return new Rectangle(x - (b / 2), y - (h / 2), b, h);
-		
+		//Nollpunkten är X, X ska utgå från mitten och framåt.
 	}
 
 	public Rectangle getLeftHitbox() {

@@ -17,7 +17,6 @@ public class BlueBlock extends Block {
 	@Override
 	public void getPowerup() {
 		
-		
 	}
 
 }

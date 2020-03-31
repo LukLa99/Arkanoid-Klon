@@ -110,15 +110,16 @@ public class Game extends GameState {
 			}
 			for (int i = 0; i < 13; i++) {
 
-				blocks.add(new BlueBlock((i * (45)) + 50, 110, 40, 40, ball));
+				blocks.add(new PersistantBlock((i * (45)) + 50, 110, 40, 40, ball));
 			}
 
 			for (int i = 0; i < 16; i++) {
 
+				
 				blocks.add(new WhiteBlock((i * (45)) + 50, 160, 40, 40, ball));
 				blocks.add(new GreenBlock((i * (45)) + 50, 210, 40, 40, ball));
 				blocks.add(new RedBlock((i * (45)) + 50, 260, 40, 40, ball));
-				blocks.add(new BlueBlock((i * (45)) + 50, 310, 40, 40, ball));
+				blocks.add(new BlueBlock((i * (45)) + 50, 350, 40, 40, ball));
 			}
 			break;
 

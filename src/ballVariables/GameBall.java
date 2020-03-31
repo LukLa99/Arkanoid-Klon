@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import blockVariables.Block;
+import blockVariables.PersistantBlock;
 import game.*;
 
 @SuppressWarnings("serial")
@@ -45,12 +46,21 @@ public class GameBall extends Ball {
 	
 		ArrayList<Block> toRemove = new ArrayList<Block>();
 		for (Block b : blocks) {
-		            if (b.intersects(ballHitbox)) {
+		
+			
+			 if (b.intersects(ballHitbox)) {
 		                toRemove.add(intersect(b));
 
 		            }
 		        }
 		for (Block b : toRemove) {
+			
+			if(b instanceof PersistantBlock){
+				return ;}
+			
+			else {
+				
+			}
 		  blocks.remove(b);
 		}
 		
